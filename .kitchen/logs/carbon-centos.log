@@ -1,0 +1,211 @@
+I, [2019-01-02T22:32:44.222533 #28698]  INFO -- carbon-centos: -----> Creating <carbon-centos>...
+I, [2019-01-02T22:32:44.260582 #28698]  INFO -- carbon-centos: Sending build context to Docker daemon  109.1kB
+I, [2019-01-02T22:32:44.337249 #28698]  INFO -- carbon-centos: Step 1/16 : FROM centos
+I, [2019-01-02T22:32:44.337409 #28698]  INFO -- carbon-centos:  ---> 1e1148e4cc2c
+I, [2019-01-02T22:32:44.337462 #28698]  INFO -- carbon-centos: Step 2/16 : ENV container docker
+I, [2019-01-02T22:32:44.337714 #28698]  INFO -- carbon-centos:  ---> Using cache
+I, [2019-01-02T22:32:44.337757 #28698]  INFO -- carbon-centos:  ---> 556ae5bd518c
+I, [2019-01-02T22:32:44.337850 #28698]  INFO -- carbon-centos: Step 3/16 : RUN yum clean all
+I, [2019-01-02T22:32:44.338035 #28698]  INFO -- carbon-centos:  ---> Using cache
+I, [2019-01-02T22:32:44.338076 #28698]  INFO -- carbon-centos:  ---> a9893dc37f4a
+I, [2019-01-02T22:32:44.338166 #28698]  INFO -- carbon-centos: Step 4/16 : RUN yum install -y sudo openssh-server openssh-clients which curl
+I, [2019-01-02T22:32:44.395225 #28698]  INFO -- carbon-centos:  ---> Running in da1b56c4401d
+I, [2019-01-02T22:32:44.853067 #28698]  INFO -- carbon-centos: Loaded plugins: fastestmirror, ovl
+I, [2019-01-02T22:32:45.006689 #28698]  INFO -- carbon-centos: Determining fastest mirrors
+I, [2019-01-02T22:33:41.061454 #28698]  INFO -- carbon-centos: [91m
+I, [2019-01-02T22:33:41.061534 #28698]  INFO -- carbon-centos: 
+I, [2019-01-02T22:33:41.061565 #28698]  INFO -- carbon-centos:  One of the configured repositories failed (Unknown),
+I, [2019-01-02T22:33:41.061588 #28698]  INFO -- carbon-centos:  and yum doesn't have enough cached data to continue. At this point the only
+I, [2019-01-02T22:33:41.061611 #28698]  INFO -- carbon-centos:  safe thing yum can do is fail. There are a few ways to work "fix" this:
+I, [2019-01-02T22:33:41.061632 #28698]  INFO -- carbon-centos: 
+I, [2019-01-02T22:33:41.061651 #28698]  INFO -- carbon-centos:      1. Contact the upstream for the repository and get them to fix the problem.
+I, [2019-01-02T22:33:41.061671 #28698]  INFO -- carbon-centos: 
+I, [2019-01-02T22:33:41.061691 #28698]  INFO -- carbon-centos:      2. Reconfigure the baseurl/etc. for the repository, to point to a working
+I, [2019-01-02T22:33:41.061731 #28698]  INFO -- carbon-centos:  upstream. This is most often useful if you are using a newer
+I, [2019-01-02T22:33:41.061763 #28698]  INFO -- carbon-centos:  distribution release than is supported by the repository (and the
+I, [2019-01-02T22:33:41.061789 #28698]  INFO -- carbon-centos:  packages for the previous distribution release still work).
+I, [2019-01-02T22:33:41.061809 #28698]  INFO -- carbon-centos: 
+I, [2019-01-02T22:33:41.061828 #28698]  INFO -- carbon-centos:      3. Run the command with the repository temporarily disabled
+I, [2019-01-02T22:33:41.061852 #28698]  INFO -- carbon-centos:      yum --disablerepo=<repoid> ...
+I, [2019-01-02T22:33:41.061871 #28698]  INFO -- carbon-centos: 
+I, [2019-01-02T22:33:41.061889 #28698]  INFO -- carbon-centos:      4. Disable the repository permanently, so yum won't use it by default. Yum
+I, [2019-01-02T22:33:41.061913 #28698]  INFO -- carbon-centos:  will then just ignore the repository until you permanently enable it
+I, [2019-01-02T22:33:41.061938 #28698]  INFO -- carbon-centos:  again or use --enablerepo for temporary usage:
+I, [2019-01-02T22:33:41.061957 #28698]  INFO -- carbon-centos: 
+I, [2019-01-02T22:33:41.061979 #28698]  INFO -- carbon-centos:      yum-config-manager --disable <repoid>
+I, [2019-01-02T22:33:41.062002 #28698]  INFO -- carbon-centos:  or
+I, [2019-01-02T22:33:41.062026 #28698]  INFO -- carbon-centos:      subscription-manager repos --disable=<repoid>
+I, [2019-01-02T22:33:41.062044 #28698]  INFO -- carbon-centos: 
+I, [2019-01-02T22:33:41.062063 #28698]  INFO -- carbon-centos:      5. Configure the failing repository to be skipped, if it is unavailable.
+I, [2019-01-02T22:33:41.062101 #28698]  INFO -- carbon-centos:  Note that yum will try to contact the repo. when it runs most commands,
+I, [2019-01-02T22:33:41.062144 #28698]  INFO -- carbon-centos:  so will have to try and fail each time (and thus. yum will be be much
+I, [2019-01-02T22:33:41.062214 #28698]  INFO -- carbon-centos:  slower). If it is a very temporary problem though, this is often a nice
+I, [2019-01-02T22:33:41.062269 #28698]  INFO -- carbon-centos:  compromise:
+I, [2019-01-02T22:33:41.062297 #28698]  INFO -- carbon-centos: 
+I, [2019-01-02T22:33:41.062326 #28698]  INFO -- carbon-centos:      yum-config-manager --save --setopt=<repoid>.skip_if_unavailable=true
+I, [2019-01-02T22:33:41.062356 #28698]  INFO -- carbon-centos: 
+I, [2019-01-02T22:33:41.062376 #28698]  INFO -- carbon-centos: Cannot find a valid baseurl for repo: base/7/x86_64
+I, [2019-01-02T22:33:41.063122 #28698]  INFO -- carbon-centos: [0mCould not retrieve mirrorlist http://mirrorlist.centos.org/?release=7&arch=x86_64&repo=os&infra=container error was
+I, [2019-01-02T22:33:41.063155 #28698]  INFO -- carbon-centos: 12: Timeout on http://mirrorlist.centos.org/?release=7&arch=x86_64&repo=os&infra=container: (28, 'Resolving timed out after 30542 milliseconds')
+I, [2019-01-02T22:33:41.385576 #28698]  INFO -- carbon-centos: The command '/bin/sh -c yum install -y sudo openssh-server openssh-clients which curl' returned a non-zero code: 1
+E, [2019-01-02T22:33:41.397566 #28698] ERROR -- carbon-centos: Create failed on instance <carbon-centos>.
+E, [2019-01-02T22:33:41.397668 #28698] ERROR -- carbon-centos: ------Exception-------
+E, [2019-01-02T22:33:41.397685 #28698] ERROR -- carbon-centos: Class: Kitchen::ShellOut::ShellCommandFailed
+E, [2019-01-02T22:33:41.397695 #28698] ERROR -- carbon-centos: Message: Expected process to exit with [0], but received '1'
+---- Begin output of docker -H unix:///var/run/docker.sock build -f Dockerfile-kitchen20190102-28698-1fzhvog . ----
+STDOUT: Sending build context to Docker daemon  109.1kB
+Step 1/16 : FROM centos
+ ---> 1e1148e4cc2c
+Step 2/16 : ENV container docker
+ ---> Using cache
+ ---> 556ae5bd518c
+Step 3/16 : RUN yum clean all
+ ---> Using cache
+ ---> a9893dc37f4a
+Step 4/16 : RUN yum install -y sudo openssh-server openssh-clients which curl
+ ---> Running in da1b56c4401d
+Loaded plugins: fastestmirror, ovl
+Determining fastest mirrors
+[91m
+
+ One of the configured repositories failed (Unknown),
+ and yum doesn't have enough cached data to continue. At this point the only
+ safe thing yum can do is fail. There are a few ways to work "fix" this:
+
+     1. Contact the upstream for the repository and get them to fix the problem.
+
+     2. Reconfigure the baseurl/etc. for the repository, to point to a working
+        upstream. This is most often useful if you are using a newer
+        distribution release than is supported by the repository (and the
+        packages for the previous distribution release still work).
+
+     3. Run the command with the repository temporarily disabled
+            yum --disablerepo=<repoid> ...
+
+     4. Disable the repository permanently, so yum won't use it by default. Yum
+        will then just ignore the repository until you permanently enable it
+        again or use --enablerepo for temporary usage:
+
+            yum-config-manager --disable <repoid>
+        or
+            subscription-manager repos --disable=<repoid>
+
+     5. Configure the failing repository to be skipped, if it is unavailable.
+        Note that yum will try to contact the repo. when it runs most commands,
+        so will have to try and fail each time (and thus. yum will be be much
+        slower). If it is a very temporary problem though, this is often a nice
+        compromise:
+
+            yum-config-manager --save --setopt=<repoid>.skip_if_unavailable=true
+
+Cannot find a valid baseurl for repo: base/7/x86_64
+[0mCould not retrieve mirrorlist http://mirrorlist.centos.org/?release=7&arch=x86_64&repo=os&infra=container error was
+12: Timeout on http://mirrorlist.centos.org/?release=7&arch=x86_64&repo=os&infra=container: (28, 'Resolving timed out after 30542 milliseconds')
+STDERR: The command '/bin/sh -c yum install -y sudo openssh-server openssh-clients which curl' returned a non-zero code: 1
+---- End output of docker -H unix:///var/run/docker.sock build -f Dockerfile-kitchen20190102-28698-1fzhvog . ----
+Ran docker -H unix:///var/run/docker.sock build -f Dockerfile-kitchen20190102-28698-1fzhvog . returned 1
+E, [2019-01-02T22:33:41.397714 #28698] ERROR -- carbon-centos: ----------------------
+E, [2019-01-02T22:33:41.397723 #28698] ERROR -- carbon-centos: ------Backtrace-------
+E, [2019-01-02T22:33:41.397732 #28698] ERROR -- carbon-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/shell_out.rb:71:in `rescue in run_command'
+E, [2019-01-02T22:33:41.397740 #28698] ERROR -- carbon-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/shell_out.rb:58:in `run_command'
+E, [2019-01-02T22:33:41.397749 #28698] ERROR -- carbon-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/kitchen-docker-2.7.0/lib/kitchen/driver/docker.rb:156:in `docker_command'
+E, [2019-01-02T22:33:41.397757 #28698] ERROR -- carbon-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/kitchen-docker-2.7.0/lib/kitchen/driver/docker.rb:314:in `build_image'
+E, [2019-01-02T22:33:41.397766 #28698] ERROR -- carbon-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/kitchen-docker-2.7.0/lib/kitchen/driver/docker.rb:120:in `create'
+E, [2019-01-02T22:33:41.397774 #28698] ERROR -- carbon-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/instance.rb:484:in `public_send'
+E, [2019-01-02T22:33:41.397783 #28698] ERROR -- carbon-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/instance.rb:484:in `block in perform_action'
+E, [2019-01-02T22:33:41.397791 #28698] ERROR -- carbon-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/instance.rb:551:in `synchronize_or_call'
+E, [2019-01-02T22:33:41.397800 #28698] ERROR -- carbon-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/instance.rb:513:in `block in action'
+E, [2019-01-02T22:33:41.397810 #28698] ERROR -- carbon-centos: /home/kevin/.rvm/rubies/ruby-2.5.3/lib/ruby/2.5.0/benchmark.rb:293:in `measure'
+E, [2019-01-02T22:33:41.397819 #28698] ERROR -- carbon-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/instance.rb:512:in `action'
+E, [2019-01-02T22:33:41.397827 #28698] ERROR -- carbon-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/instance.rb:484:in `perform_action'
+E, [2019-01-02T22:33:41.397835 #28698] ERROR -- carbon-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/instance.rb:394:in `create_action'
+E, [2019-01-02T22:33:41.397844 #28698] ERROR -- carbon-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/instance.rb:382:in `block (2 levels) in transition_to'
+E, [2019-01-02T22:33:41.397852 #28698] ERROR -- carbon-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/lifecycle_hooks.rb:45:in `run_with_hooks'
+E, [2019-01-02T22:33:41.397861 #28698] ERROR -- carbon-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/instance.rb:381:in `block in transition_to'
+E, [2019-01-02T22:33:41.397869 #28698] ERROR -- carbon-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/instance.rb:380:in `each'
+E, [2019-01-02T22:33:41.397877 #28698] ERROR -- carbon-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/instance.rb:380:in `transition_to'
+E, [2019-01-02T22:33:41.397886 #28698] ERROR -- carbon-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/instance.rb:129:in `create'
+E, [2019-01-02T22:33:41.397894 #28698] ERROR -- carbon-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/command.rb:197:in `public_send'
+E, [2019-01-02T22:33:41.397902 #28698] ERROR -- carbon-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/command.rb:197:in `run_action_in_thread'
+E, [2019-01-02T22:33:41.397911 #28698] ERROR -- carbon-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/command.rb:169:in `block (2 levels) in run_action'
+E, [2019-01-02T22:33:41.397922 #28698] ERROR -- carbon-centos: ----End Backtrace-----
+E, [2019-01-02T22:33:41.397931 #28698] ERROR -- carbon-centos: ---Nested Exception---
+E, [2019-01-02T22:33:41.397939 #28698] ERROR -- carbon-centos: Class: Mixlib::ShellOut::ShellCommandFailed
+E, [2019-01-02T22:33:41.397947 #28698] ERROR -- carbon-centos: Message: Expected process to exit with [0], but received '1'
+---- Begin output of docker -H unix:///var/run/docker.sock build -f Dockerfile-kitchen20190102-28698-1fzhvog . ----
+STDOUT: Sending build context to Docker daemon  109.1kB
+Step 1/16 : FROM centos
+ ---> 1e1148e4cc2c
+Step 2/16 : ENV container docker
+ ---> Using cache
+ ---> 556ae5bd518c
+Step 3/16 : RUN yum clean all
+ ---> Using cache
+ ---> a9893dc37f4a
+Step 4/16 : RUN yum install -y sudo openssh-server openssh-clients which curl
+ ---> Running in da1b56c4401d
+Loaded plugins: fastestmirror, ovl
+Determining fastest mirrors
+[91m
+
+ One of the configured repositories failed (Unknown),
+ and yum doesn't have enough cached data to continue. At this point the only
+ safe thing yum can do is fail. There are a few ways to work "fix" this:
+
+     1. Contact the upstream for the repository and get them to fix the problem.
+
+     2. Reconfigure the baseurl/etc. for the repository, to point to a working
+        upstream. This is most often useful if you are using a newer
+        distribution release than is supported by the repository (and the
+        packages for the previous distribution release still work).
+
+     3. Run the command with the repository temporarily disabled
+            yum --disablerepo=<repoid> ...
+
+     4. Disable the repository permanently, so yum won't use it by default. Yum
+        will then just ignore the repository until you permanently enable it
+        again or use --enablerepo for temporary usage:
+
+            yum-config-manager --disable <repoid>
+        or
+            subscription-manager repos --disable=<repoid>
+
+     5. Configure the failing repository to be skipped, if it is unavailable.
+        Note that yum will try to contact the repo. when it runs most commands,
+        so will have to try and fail each time (and thus. yum will be be much
+        slower). If it is a very temporary problem though, this is often a nice
+        compromise:
+
+            yum-config-manager --save --setopt=<repoid>.skip_if_unavailable=true
+
+Cannot find a valid baseurl for repo: base/7/x86_64
+[0mCould not retrieve mirrorlist http://mirrorlist.centos.org/?release=7&arch=x86_64&repo=os&infra=container error was
+12: Timeout on http://mirrorlist.centos.org/?release=7&arch=x86_64&repo=os&infra=container: (28, 'Resolving timed out after 30542 milliseconds')
+STDERR: The command '/bin/sh -c yum install -y sudo openssh-server openssh-clients which curl' returned a non-zero code: 1
+---- End output of docker -H unix:///var/run/docker.sock build -f Dockerfile-kitchen20190102-28698-1fzhvog . ----
+Ran docker -H unix:///var/run/docker.sock build -f Dockerfile-kitchen20190102-28698-1fzhvog . returned 1
+E, [2019-01-02T22:33:41.397957 #28698] ERROR -- carbon-centos: ----------------------
+E, [2019-01-02T22:33:41.397974 #28698] ERROR -- carbon-centos: ------Backtrace-------
+E, [2019-01-02T22:33:41.397981 #28698] ERROR -- carbon-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/shell_out.rb:71:in `rescue in run_command'
+E, [2019-01-02T22:33:41.397988 #28698] ERROR -- carbon-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/shell_out.rb:58:in `run_command'
+E, [2019-01-02T22:33:41.397996 #28698] ERROR -- carbon-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/kitchen-docker-2.7.0/lib/kitchen/driver/docker.rb:156:in `docker_command'
+E, [2019-01-02T22:33:41.398003 #28698] ERROR -- carbon-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/kitchen-docker-2.7.0/lib/kitchen/driver/docker.rb:314:in `build_image'
+E, [2019-01-02T22:33:41.398010 #28698] ERROR -- carbon-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/kitchen-docker-2.7.0/lib/kitchen/driver/docker.rb:120:in `create'
+E, [2019-01-02T22:33:41.398020 #28698] ERROR -- carbon-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/instance.rb:484:in `public_send'
+E, [2019-01-02T22:33:41.398028 #28698] ERROR -- carbon-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/instance.rb:484:in `block in perform_action'
+E, [2019-01-02T22:33:41.398036 #28698] ERROR -- carbon-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/instance.rb:551:in `synchronize_or_call'
+E, [2019-01-02T22:33:41.398043 #28698] ERROR -- carbon-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/instance.rb:513:in `block in action'
+E, [2019-01-02T22:33:41.398051 #28698] ERROR -- carbon-centos: /home/kevin/.rvm/rubies/ruby-2.5.3/lib/ruby/2.5.0/benchmark.rb:293:in `measure'
+E, [2019-01-02T22:33:41.398060 #28698] ERROR -- carbon-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/instance.rb:512:in `action'
+E, [2019-01-02T22:33:41.398068 #28698] ERROR -- carbon-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/instance.rb:484:in `perform_action'
+E, [2019-01-02T22:33:41.398075 #28698] ERROR -- carbon-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/instance.rb:394:in `create_action'
+E, [2019-01-02T22:33:41.398082 #28698] ERROR -- carbon-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/instance.rb:382:in `block (2 levels) in transition_to'
+E, [2019-01-02T22:33:41.398089 #28698] ERROR -- carbon-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/lifecycle_hooks.rb:45:in `run_with_hooks'
+E, [2019-01-02T22:33:41.398097 #28698] ERROR -- carbon-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/instance.rb:381:in `block in transition_to'
+E, [2019-01-02T22:33:41.398104 #28698] ERROR -- carbon-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/instance.rb:380:in `each'
+E, [2019-01-02T22:33:41.398111 #28698] ERROR -- carbon-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/instance.rb:380:in `transition_to'
+E, [2019-01-02T22:33:41.398118 #28698] ERROR -- carbon-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/instance.rb:129:in `create'
+E, [2019-01-02T22:33:41.398127 #28698] ERROR -- carbon-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/command.rb:197:in `public_send'
+E, [2019-01-02T22:33:41.398134 #28698] ERROR -- carbon-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/command.rb:197:in `run_action_in_thread'
+E, [2019-01-02T22:33:41.398142 #28698] ERROR -- carbon-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/command.rb:169:in `block (2 levels) in run_action'
+E, [2019-01-02T22:33:41.398149 #28698] ERROR -- carbon-centos: ----End Backtrace-----

@@ -1,0 +1,244 @@
+I, [2019-01-02T22:31:06.106805 #28698]  INFO -- nitrogen-centos: -----> Creating <nitrogen-centos>...
+I, [2019-01-02T22:31:06.145961 #28698]  INFO -- nitrogen-centos: Sending build context to Docker daemon  87.04kB
+I, [2019-01-02T22:31:06.218044 #28698]  INFO -- nitrogen-centos: Step 1/16 : FROM centos
+I, [2019-01-02T22:31:21.806996 #28698]  INFO -- nitrogen-centos: latest: Pulling from library/centos
+I, [2019-01-02T22:31:27.008820 #28698]  INFO -- nitrogen-centos: a02a4930cb5d: Pulling fs layer
+I, [2019-01-02T22:31:43.008362 #28698]  INFO -- nitrogen-centos: a02a4930cb5d: Verifying Checksum
+I, [2019-01-02T22:31:43.008445 #28698]  INFO -- nitrogen-centos: a02a4930cb5d: Download complete
+I, [2019-01-02T22:31:45.468067 #28698]  INFO -- nitrogen-centos: a02a4930cb5d: Pull complete
+I, [2019-01-02T22:31:45.476945 #28698]  INFO -- nitrogen-centos: Digest: sha256:184e5f35598e333bfa7de10d8fb1cebb5ee4df5bc0f970bf2b1e7c7345136426
+I, [2019-01-02T22:31:45.483572 #28698]  INFO -- nitrogen-centos: Status: Downloaded newer image for centos:latest
+I, [2019-01-02T22:31:45.483970 #28698]  INFO -- nitrogen-centos:  ---> 1e1148e4cc2c
+I, [2019-01-02T22:31:45.484002 #28698]  INFO -- nitrogen-centos: Step 2/16 : ENV container docker
+I, [2019-01-02T22:31:45.554549 #28698]  INFO -- nitrogen-centos:  ---> Running in b2ba03ce6f72
+I, [2019-01-02T22:31:45.693291 #28698]  INFO -- nitrogen-centos: Removing intermediate container b2ba03ce6f72
+I, [2019-01-02T22:31:45.693362 #28698]  INFO -- nitrogen-centos:  ---> 556ae5bd518c
+I, [2019-01-02T22:31:45.693377 #28698]  INFO -- nitrogen-centos: Step 3/16 : RUN yum clean all
+I, [2019-01-02T22:31:45.759805 #28698]  INFO -- nitrogen-centos:  ---> Running in e505ed14c3f6
+I, [2019-01-02T22:31:46.206828 #28698]  INFO -- nitrogen-centos: Loaded plugins: fastestmirror, ovl
+I, [2019-01-02T22:31:46.356334 #28698]  INFO -- nitrogen-centos: Cleaning repos: base extras updates
+I, [2019-01-02T22:31:46.933059 #28698]  INFO -- nitrogen-centos: Removing intermediate container e505ed14c3f6
+I, [2019-01-02T22:31:46.933150 #28698]  INFO -- nitrogen-centos:  ---> a9893dc37f4a
+I, [2019-01-02T22:31:46.933165 #28698]  INFO -- nitrogen-centos: Step 4/16 : RUN yum install -y sudo openssh-server openssh-clients which curl
+I, [2019-01-02T22:31:47.008332 #28698]  INFO -- nitrogen-centos:  ---> Running in a9b15d639cea
+I, [2019-01-02T22:31:47.434939 #28698]  INFO -- nitrogen-centos: Loaded plugins: fastestmirror, ovl
+I, [2019-01-02T22:31:47.818750 #28698]  INFO -- nitrogen-centos: Determining fastest mirrors
+I, [2019-01-02T22:32:43.867388 #28698]  INFO -- nitrogen-centos: [91m
+I, [2019-01-02T22:32:43.867463 #28698]  INFO -- nitrogen-centos: 
+I, [2019-01-02T22:32:43.867494 #28698]  INFO -- nitrogen-centos:  One of the configured repositories failed (Unknown),
+I, [2019-01-02T22:32:43.867523 #28698]  INFO -- nitrogen-centos:  and yum doesn't have enough cached data to continue. At this point the only
+I, [2019-01-02T22:32:43.867548 #28698]  INFO -- nitrogen-centos:  safe thing yum can do is fail. There are a few ways to work "fix" this:
+I, [2019-01-02T22:32:43.867587 #28698]  INFO -- nitrogen-centos: 
+I, [2019-01-02T22:32:43.867615 #28698]  INFO -- nitrogen-centos:      1. Contact the upstream for the repository and get them to fix the problem.
+I, [2019-01-02T22:32:43.867637 #28698]  INFO -- nitrogen-centos: 
+I, [2019-01-02T22:32:43.867662 #28698]  INFO -- nitrogen-centos:      2. Reconfigure the baseurl/etc. for the repository, to point to a working
+I, [2019-01-02T22:32:43.867702 #28698]  INFO -- nitrogen-centos:  upstream. This is most often useful if you are using a newer
+I, [2019-01-02T22:32:43.867736 #28698]  INFO -- nitrogen-centos:  distribution release than is supported by the repository (and the
+I, [2019-01-02T22:32:43.867765 #28698]  INFO -- nitrogen-centos:  packages for the previous distribution release still work).
+I, [2019-01-02T22:32:43.867793 #28698]  INFO -- nitrogen-centos: 
+I, [2019-01-02T22:32:43.867814 #28698]  INFO -- nitrogen-centos:      3. Run the command with the repository temporarily disabled
+I, [2019-01-02T22:32:43.867843 #28698]  INFO -- nitrogen-centos:      yum --disablerepo=<repoid> ...
+I, [2019-01-02T22:32:43.867880 #28698]  INFO -- nitrogen-centos: 
+I, [2019-01-02T22:32:43.867903 #28698]  INFO -- nitrogen-centos:      4. Disable the repository permanently, so yum won't use it by default. Yum
+I, [2019-01-02T22:32:43.867936 #28698]  INFO -- nitrogen-centos:  will then just ignore the repository until you permanently enable it
+I, [2019-01-02T22:32:43.867964 #28698]  INFO -- nitrogen-centos:  again or use --enablerepo for temporary usage:
+I, [2019-01-02T22:32:43.867986 #28698]  INFO -- nitrogen-centos: 
+I, [2019-01-02T22:32:43.868016 #28698]  INFO -- nitrogen-centos:      yum-config-manager --disable <repoid>
+I, [2019-01-02T22:32:43.868045 #28698]  INFO -- nitrogen-centos:  or
+I, [2019-01-02T22:32:43.868076 #28698]  INFO -- nitrogen-centos:      subscription-manager repos --disable=<repoid>
+I, [2019-01-02T22:32:43.868097 #28698]  INFO -- nitrogen-centos: 
+I, [2019-01-02T22:32:43.868116 #28698]  INFO -- nitrogen-centos:      5. Configure the failing repository to be skipped, if it is unavailable.
+I, [2019-01-02T22:32:43.868139 #28698]  INFO -- nitrogen-centos:  Note that yum will try to contact the repo. when it runs most commands,
+I, [2019-01-02T22:32:43.868169 #28698]  INFO -- nitrogen-centos:  so will have to try and fail each time (and thus. yum will be be much
+I, [2019-01-02T22:32:43.868194 #28698]  INFO -- nitrogen-centos:  slower). If it is a very temporary problem though, this is often a nice
+I, [2019-01-02T22:32:43.868220 #28698]  INFO -- nitrogen-centos:  compromise:
+I, [2019-01-02T22:32:43.868238 #28698]  INFO -- nitrogen-centos: 
+I, [2019-01-02T22:32:43.868257 #28698]  INFO -- nitrogen-centos:      yum-config-manager --save --setopt=<repoid>.skip_if_unavailable=true
+I, [2019-01-02T22:32:43.868275 #28698]  INFO -- nitrogen-centos: 
+I, [2019-01-02T22:32:43.869309 #28698]  INFO -- nitrogen-centos: Cannot find a valid baseurl for repo: base/7/x86_64
+I, [2019-01-02T22:32:43.870691 #28698]  INFO -- nitrogen-centos: [0mCould not retrieve mirrorlist http://mirrorlist.centos.org/?release=7&arch=x86_64&repo=os&infra=container error was
+I, [2019-01-02T22:32:43.870735 #28698]  INFO -- nitrogen-centos: 12: Timeout on http://mirrorlist.centos.org/?release=7&arch=x86_64&repo=os&infra=container: (28, 'Resolving timed out after 30542 milliseconds')
+I, [2019-01-02T22:32:44.206516 #28698]  INFO -- nitrogen-centos: The command '/bin/sh -c yum install -y sudo openssh-server openssh-clients which curl' returned a non-zero code: 1
+E, [2019-01-02T22:32:44.219726 #28698] ERROR -- nitrogen-centos: Create failed on instance <nitrogen-centos>.
+E, [2019-01-02T22:32:44.219857 #28698] ERROR -- nitrogen-centos: ------Exception-------
+E, [2019-01-02T22:32:44.219877 #28698] ERROR -- nitrogen-centos: Class: Kitchen::ShellOut::ShellCommandFailed
+E, [2019-01-02T22:32:44.219890 #28698] ERROR -- nitrogen-centos: Message: Expected process to exit with [0], but received '1'
+---- Begin output of docker -H unix:///var/run/docker.sock build -f Dockerfile-kitchen20190102-28698-t3afgm . ----
+STDOUT: Sending build context to Docker daemon  87.04kB
+Step 1/16 : FROM centos
+latest: Pulling from library/centos
+a02a4930cb5d: Pulling fs layer
+a02a4930cb5d: Verifying Checksum
+a02a4930cb5d: Download complete
+a02a4930cb5d: Pull complete
+Digest: sha256:184e5f35598e333bfa7de10d8fb1cebb5ee4df5bc0f970bf2b1e7c7345136426
+Status: Downloaded newer image for centos:latest
+ ---> 1e1148e4cc2c
+Step 2/16 : ENV container docker
+ ---> Running in b2ba03ce6f72
+Removing intermediate container b2ba03ce6f72
+ ---> 556ae5bd518c
+Step 3/16 : RUN yum clean all
+ ---> Running in e505ed14c3f6
+Loaded plugins: fastestmirror, ovl
+Cleaning repos: base extras updates
+Removing intermediate container e505ed14c3f6
+ ---> a9893dc37f4a
+Step 4/16 : RUN yum install -y sudo openssh-server openssh-clients which curl
+ ---> Running in a9b15d639cea
+Loaded plugins: fastestmirror, ovl
+Determining fastest mirrors
+[91m
+
+ One of the configured repositories failed (Unknown),
+ and yum doesn't have enough cached data to continue. At this point the only
+ safe thing yum can do is fail. There are a few ways to work "fix" this:
+
+     1. Contact the upstream for the repository and get them to fix the problem.
+
+     2. Reconfigure the baseurl/etc. for the repository, to point to a working
+        upstream. This is most often useful if you are using a newer
+        distribution release than is supported by the repository (and the
+        packages for the previous distribution release still work).
+
+     3. Run the command with the repository temporarily disabled
+            yum --disablerepo=<repoid> ...
+
+     4. Disable the repository permanently, so yum won't use it by default. Yum
+        will then just ignore the repository until you permanently enable it
+        again or use --enablerepo for temporary usage:
+
+            yum-config-manager --disable <repoid>
+        or
+            subscription-manager repos --disable=<repoid>
+
+     5. Configure the failing repository to be skipped, if it is unavailable.
+        Note that yum will try to contact the repo. when it runs most commands,
+        so will have to try and fail each time (and thus. yum will be be much
+        slower). If it is a very temporary problem though, this is often a nice
+        compromise:
+
+            yum-config-manager --save --setopt=<repoid>.skip_if_unavailable=true
+
+Cannot find a valid baseurl for repo: base/7/x86_64
+[0mCould not retrieve mirrorlist http://mirrorlist.centos.org/?release=7&arch=x86_64&repo=os&infra=container error was
+12: Timeout on http://mirrorlist.centos.org/?release=7&arch=x86_64&repo=os&infra=container: (28, 'Resolving timed out after 30542 milliseconds')
+STDERR: The command '/bin/sh -c yum install -y sudo openssh-server openssh-clients which curl' returned a non-zero code: 1
+---- End output of docker -H unix:///var/run/docker.sock build -f Dockerfile-kitchen20190102-28698-t3afgm . ----
+Ran docker -H unix:///var/run/docker.sock build -f Dockerfile-kitchen20190102-28698-t3afgm . returned 1
+E, [2019-01-02T22:32:44.220540 #28698] ERROR -- nitrogen-centos: ----------------------
+E, [2019-01-02T22:32:44.220557 #28698] ERROR -- nitrogen-centos: ------Backtrace-------
+E, [2019-01-02T22:32:44.220567 #28698] ERROR -- nitrogen-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/shell_out.rb:71:in `rescue in run_command'
+E, [2019-01-02T22:32:44.220578 #28698] ERROR -- nitrogen-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/shell_out.rb:58:in `run_command'
+E, [2019-01-02T22:32:44.220588 #28698] ERROR -- nitrogen-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/kitchen-docker-2.7.0/lib/kitchen/driver/docker.rb:156:in `docker_command'
+E, [2019-01-02T22:32:44.220597 #28698] ERROR -- nitrogen-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/kitchen-docker-2.7.0/lib/kitchen/driver/docker.rb:314:in `build_image'
+E, [2019-01-02T22:32:44.220607 #28698] ERROR -- nitrogen-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/kitchen-docker-2.7.0/lib/kitchen/driver/docker.rb:120:in `create'
+E, [2019-01-02T22:32:44.220617 #28698] ERROR -- nitrogen-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/instance.rb:484:in `public_send'
+E, [2019-01-02T22:32:44.220627 #28698] ERROR -- nitrogen-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/instance.rb:484:in `block in perform_action'
+E, [2019-01-02T22:32:44.220642 #28698] ERROR -- nitrogen-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/instance.rb:551:in `synchronize_or_call'
+E, [2019-01-02T22:32:44.220652 #28698] ERROR -- nitrogen-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/instance.rb:513:in `block in action'
+E, [2019-01-02T22:32:44.220662 #28698] ERROR -- nitrogen-centos: /home/kevin/.rvm/rubies/ruby-2.5.3/lib/ruby/2.5.0/benchmark.rb:293:in `measure'
+E, [2019-01-02T22:32:44.220672 #28698] ERROR -- nitrogen-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/instance.rb:512:in `action'
+E, [2019-01-02T22:32:44.220682 #28698] ERROR -- nitrogen-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/instance.rb:484:in `perform_action'
+E, [2019-01-02T22:32:44.220696 #28698] ERROR -- nitrogen-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/instance.rb:394:in `create_action'
+E, [2019-01-02T22:32:44.220707 #28698] ERROR -- nitrogen-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/instance.rb:382:in `block (2 levels) in transition_to'
+E, [2019-01-02T22:32:44.220716 #28698] ERROR -- nitrogen-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/lifecycle_hooks.rb:45:in `run_with_hooks'
+E, [2019-01-02T22:32:44.220726 #28698] ERROR -- nitrogen-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/instance.rb:381:in `block in transition_to'
+E, [2019-01-02T22:32:44.220736 #28698] ERROR -- nitrogen-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/instance.rb:380:in `each'
+E, [2019-01-02T22:32:44.220750 #28698] ERROR -- nitrogen-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/instance.rb:380:in `transition_to'
+E, [2019-01-02T22:32:44.220760 #28698] ERROR -- nitrogen-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/instance.rb:129:in `create'
+E, [2019-01-02T22:32:44.220770 #28698] ERROR -- nitrogen-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/command.rb:197:in `public_send'
+E, [2019-01-02T22:32:44.220780 #28698] ERROR -- nitrogen-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/command.rb:197:in `run_action_in_thread'
+E, [2019-01-02T22:32:44.220789 #28698] ERROR -- nitrogen-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/command.rb:169:in `block (2 levels) in run_action'
+E, [2019-01-02T22:32:44.220799 #28698] ERROR -- nitrogen-centos: ----End Backtrace-----
+E, [2019-01-02T22:32:44.220809 #28698] ERROR -- nitrogen-centos: ---Nested Exception---
+E, [2019-01-02T22:32:44.220818 #28698] ERROR -- nitrogen-centos: Class: Mixlib::ShellOut::ShellCommandFailed
+E, [2019-01-02T22:32:44.220828 #28698] ERROR -- nitrogen-centos: Message: Expected process to exit with [0], but received '1'
+---- Begin output of docker -H unix:///var/run/docker.sock build -f Dockerfile-kitchen20190102-28698-t3afgm . ----
+STDOUT: Sending build context to Docker daemon  87.04kB
+Step 1/16 : FROM centos
+latest: Pulling from library/centos
+a02a4930cb5d: Pulling fs layer
+a02a4930cb5d: Verifying Checksum
+a02a4930cb5d: Download complete
+a02a4930cb5d: Pull complete
+Digest: sha256:184e5f35598e333bfa7de10d8fb1cebb5ee4df5bc0f970bf2b1e7c7345136426
+Status: Downloaded newer image for centos:latest
+ ---> 1e1148e4cc2c
+Step 2/16 : ENV container docker
+ ---> Running in b2ba03ce6f72
+Removing intermediate container b2ba03ce6f72
+ ---> 556ae5bd518c
+Step 3/16 : RUN yum clean all
+ ---> Running in e505ed14c3f6
+Loaded plugins: fastestmirror, ovl
+Cleaning repos: base extras updates
+Removing intermediate container e505ed14c3f6
+ ---> a9893dc37f4a
+Step 4/16 : RUN yum install -y sudo openssh-server openssh-clients which curl
+ ---> Running in a9b15d639cea
+Loaded plugins: fastestmirror, ovl
+Determining fastest mirrors
+[91m
+
+ One of the configured repositories failed (Unknown),
+ and yum doesn't have enough cached data to continue. At this point the only
+ safe thing yum can do is fail. There are a few ways to work "fix" this:
+
+     1. Contact the upstream for the repository and get them to fix the problem.
+
+     2. Reconfigure the baseurl/etc. for the repository, to point to a working
+        upstream. This is most often useful if you are using a newer
+        distribution release than is supported by the repository (and the
+        packages for the previous distribution release still work).
+
+     3. Run the command with the repository temporarily disabled
+            yum --disablerepo=<repoid> ...
+
+     4. Disable the repository permanently, so yum won't use it by default. Yum
+        will then just ignore the repository until you permanently enable it
+        again or use --enablerepo for temporary usage:
+
+            yum-config-manager --disable <repoid>
+        or
+            subscription-manager repos --disable=<repoid>
+
+     5. Configure the failing repository to be skipped, if it is unavailable.
+        Note that yum will try to contact the repo. when it runs most commands,
+        so will have to try and fail each time (and thus. yum will be be much
+        slower). If it is a very temporary problem though, this is often a nice
+        compromise:
+
+            yum-config-manager --save --setopt=<repoid>.skip_if_unavailable=true
+
+Cannot find a valid baseurl for repo: base/7/x86_64
+[0mCould not retrieve mirrorlist http://mirrorlist.centos.org/?release=7&arch=x86_64&repo=os&infra=container error was
+12: Timeout on http://mirrorlist.centos.org/?release=7&arch=x86_64&repo=os&infra=container: (28, 'Resolving timed out after 30542 milliseconds')
+STDERR: The command '/bin/sh -c yum install -y sudo openssh-server openssh-clients which curl' returned a non-zero code: 1
+---- End output of docker -H unix:///var/run/docker.sock build -f Dockerfile-kitchen20190102-28698-t3afgm . ----
+Ran docker -H unix:///var/run/docker.sock build -f Dockerfile-kitchen20190102-28698-t3afgm . returned 1
+E, [2019-01-02T22:32:44.220845 #28698] ERROR -- nitrogen-centos: ----------------------
+E, [2019-01-02T22:32:44.220856 #28698] ERROR -- nitrogen-centos: ------Backtrace-------
+E, [2019-01-02T22:32:44.220866 #28698] ERROR -- nitrogen-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/shell_out.rb:71:in `rescue in run_command'
+E, [2019-01-02T22:32:44.220880 #28698] ERROR -- nitrogen-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/shell_out.rb:58:in `run_command'
+E, [2019-01-02T22:32:44.220890 #28698] ERROR -- nitrogen-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/kitchen-docker-2.7.0/lib/kitchen/driver/docker.rb:156:in `docker_command'
+E, [2019-01-02T22:32:44.220900 #28698] ERROR -- nitrogen-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/kitchen-docker-2.7.0/lib/kitchen/driver/docker.rb:314:in `build_image'
+E, [2019-01-02T22:32:44.220910 #28698] ERROR -- nitrogen-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/kitchen-docker-2.7.0/lib/kitchen/driver/docker.rb:120:in `create'
+E, [2019-01-02T22:32:44.220919 #28698] ERROR -- nitrogen-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/instance.rb:484:in `public_send'
+E, [2019-01-02T22:32:44.220929 #28698] ERROR -- nitrogen-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/instance.rb:484:in `block in perform_action'
+E, [2019-01-02T22:32:44.220938 #28698] ERROR -- nitrogen-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/instance.rb:551:in `synchronize_or_call'
+E, [2019-01-02T22:32:44.220948 #28698] ERROR -- nitrogen-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/instance.rb:513:in `block in action'
+E, [2019-01-02T22:32:44.220958 #28698] ERROR -- nitrogen-centos: /home/kevin/.rvm/rubies/ruby-2.5.3/lib/ruby/2.5.0/benchmark.rb:293:in `measure'
+E, [2019-01-02T22:32:44.220971 #28698] ERROR -- nitrogen-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/instance.rb:512:in `action'
+E, [2019-01-02T22:32:44.220981 #28698] ERROR -- nitrogen-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/instance.rb:484:in `perform_action'
+E, [2019-01-02T22:32:44.220990 #28698] ERROR -- nitrogen-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/instance.rb:394:in `create_action'
+E, [2019-01-02T22:32:44.221000 #28698] ERROR -- nitrogen-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/instance.rb:382:in `block (2 levels) in transition_to'
+E, [2019-01-02T22:32:44.221010 #28698] ERROR -- nitrogen-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/lifecycle_hooks.rb:45:in `run_with_hooks'
+E, [2019-01-02T22:32:44.221020 #28698] ERROR -- nitrogen-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/instance.rb:381:in `block in transition_to'
+E, [2019-01-02T22:32:44.221033 #28698] ERROR -- nitrogen-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/instance.rb:380:in `each'
+E, [2019-01-02T22:32:44.221043 #28698] ERROR -- nitrogen-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/instance.rb:380:in `transition_to'
+E, [2019-01-02T22:32:44.221053 #28698] ERROR -- nitrogen-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/instance.rb:129:in `create'
+E, [2019-01-02T22:32:44.221063 #28698] ERROR -- nitrogen-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/command.rb:197:in `public_send'
+E, [2019-01-02T22:32:44.221078 #28698] ERROR -- nitrogen-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/command.rb:197:in `run_action_in_thread'
+E, [2019-01-02T22:32:44.221088 #28698] ERROR -- nitrogen-centos: /home/kevin/.rvm/gems/ruby-2.5.3/gems/test-kitchen-1.24.0/lib/kitchen/command.rb:169:in `block (2 levels) in run_action'
+E, [2019-01-02T22:32:44.221098 #28698] ERROR -- nitrogen-centos: ----End Backtrace-----
